@@ -1170,6 +1170,9 @@ ifneq ($(wildcard device/lmodroid/sepolicy/common/sepolicy.mk),)
 ## last, to avoid accidental resetting by device configs
 $(eval include device/lmodroid/sepolicy/common/sepolicy.mk)
 endif
+ifneq ($(wildcard device/lineage/sepolicy/common/sepolicy.mk),)
+$(eval include device/lineage/sepolicy/common/sepolicy.mk)
+endif
 endif
 
 ifeq ($(CALLED_FROM_SETUP),true)
