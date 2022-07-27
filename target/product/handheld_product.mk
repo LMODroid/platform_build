@@ -22,7 +22,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/media_product.mk)
 
 # /product packages
 PRODUCT_PACKAGES += \
-    Browser2 \
     Calendar \
     Contacts \
     DeskClock \
@@ -32,6 +31,10 @@ PRODUCT_PACKAGES += \
     QuickSearchBox \
     SettingsIntelligence \
     frameworks-base-overlays
+
+# Include only for eng builds.
+PRODUCT_PACKAGES_ENG += \
+    Browser2
 
 ifeq ($(LMODROID_BUILD),)
 PRODUCT_PACKAGES += \
