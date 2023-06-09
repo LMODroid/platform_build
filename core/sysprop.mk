@@ -219,10 +219,18 @@ ifeq ($(TARGET_BUILD_VARIANT),user)
   # release build number or branch.buld_number non-release builds
 
   # Dev. branches should have DISPLAY_BUILD_NUMBER set
-  ifeq (true,$(DISPLAY_BUILD_NUMBER))
-    BUILD_DISPLAY_ID := $(BUILD_ID).$(BUILD_NUMBER_FROM_FILE) $(BUILD_KEYS)
+  ifeq ($(LMODROID_BUILDTYPE),UNOFFICIAL)
+    ifeq (true,$(DISPLAY_BUILD_NUMBER))
+      BUILD_DISPLAY_ID := $(BUILD_ID).$(BUILD_NUMBER_FROM_FILE) $(BUILD_KEYS)
+    else
+      BUILD_DISPLAY_ID := $(BUILD_ID) $(BUILD_KEYS)
+    endif
   else
-    BUILD_DISPLAY_ID := $(BUILD_ID) $(BUILD_KEYS)
+    ifeq (true,$(DISPLAY_BUILD_NUMBER))
+      BUILD_DISPLAY_ID := $(BUILD_ID).$(BUILD_NUMBER_FROM_FILE)
+    else
+      BUILD_DISPLAY_ID := $(BUILD_ID)
+    endif
   endif
 else
   # Non-user builds should show detailed build information
