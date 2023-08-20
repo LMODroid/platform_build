@@ -44,7 +44,11 @@ ifneq (,$(filter $(TARGET_$(combo_2nd_arch_prefix)CPU_VARIANT), $(KNOWN_ARMv82a_
   ifeq (,$(TARGET_$(combo_2nd_arch_prefix)ARCH_VARIANT))
     TARGET_$(combo_2nd_arch_prefix)ARCH_VARIANT := armv8-2a
   else ifneq (armv8-2a,$(TARGET_$(combo_2nd_arch_prefix)ARCH_VARIANT))
-    $(error Incorrect TARGET_$(combo_2nd_arch_prefix)ARCH_VARIANT, $(TARGET_$(combo_2nd_arch_prefix)ARCH_VARIANT). Use armv8-2a instead.)
+    ifneq (,$(filter $(TARGET_$(combo_2nd_arch_prefix)CPU_VARIANT), $(KNOWN_ARMv8_CORES)))
+      $(warning Incorrect TARGET_$(combo_2nd_arch_prefix)ARCH_VARIANT, $(TARGET_$(combo_2nd_arch_prefix)ARCH_VARIANT). Use armv8-2a instead.)
+    else
+      $(error Incorrect TARGET_$(combo_2nd_arch_prefix)ARCH_VARIANT, $(TARGET_$(combo_2nd_arch_prefix)ARCH_VARIANT). Use armv8-2a instead.)
+    endif
   endif
 else ifneq (,$(filter $(TARGET_$(combo_2nd_arch_prefix)CPU_VARIANT), $(KNOWN_ARMv8_CORES)))
   ifeq (,$(TARGET_$(combo_2nd_arch_prefix)ARCH_VARIANT))
