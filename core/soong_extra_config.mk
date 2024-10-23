@@ -97,6 +97,8 @@ $(call add_json_bool, UsesProductImage, $(filter true,$(BOARD_USES_PRODUCTIMAGE)
 
 $(call add_json_bool, TargetBoots16K, $(filter true,$(TARGET_BOOTS_16K)))
 
+$(call add_json_str, LMODroidBuildType, $(LMODROID_BUILDTYPE))
+
 $(call json_end)
 
 $(shell mkdir -p $(dir $(SOONG_EXTRA_VARIABLES)))
