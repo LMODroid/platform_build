@@ -22,10 +22,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/media_product.mk)
 
 # /product packages
 PRODUCT_PACKAGES += \
-    Calendar \
-    Camera2 \
     DeskClock \
-    Gallery2 \
     Music \
     preinstalled-packages-platform-handheld-product.xml \
     QuickSearchBox \
@@ -38,6 +35,9 @@ PRODUCT_PACKAGES_ENG += \
 
 ifeq ($(LMODROID_BUILD),)
 PRODUCT_PACKAGES += \
+    Calendar \
+    Camera2 \
+    Gallery2 \
     LatinIME
 endif
 
